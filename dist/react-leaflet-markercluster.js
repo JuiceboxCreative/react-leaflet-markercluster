@@ -22,7 +22,7 @@ var _leaflet2 = _interopRequireDefault(_leaflet);
 
 require('leaflet.markercluster');
 
-require('./style.css');
+require('./style.scss');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -64,8 +64,8 @@ var MarkerClusterGroup = function (_LayerGroup) {
       if (nextProps.markers && nextProps.markers.length) {
         // Remove layer from map with previously rendered clustered markers
         this.layerContainer.removeLayer(this.leafletElement);
-        // Remove layers with markers from markerClusterGroup
-        this.leafletElement.clearLayers();
+
+        this.leafletElement = _leaflet2.default.markerClusterGroup(nextProps.options);
 
         this.addLayersWithMarkersFromProps(nextProps.markers);
       }

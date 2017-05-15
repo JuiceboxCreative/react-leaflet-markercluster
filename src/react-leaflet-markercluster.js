@@ -33,8 +33,8 @@ export default class MarkerClusterGroup extends LayerGroup {
     if (nextProps.markers && nextProps.markers.length) {
       // Remove layer from map with previously rendered clustered markers
       this.layerContainer.removeLayer(this.leafletElement);
-      // Remove layers with markers from markerClusterGroup
-      this.leafletElement.clearLayers();
+
+      this.leafletElement = L.markerClusterGroup(nextProps.options);
 
       this.addLayersWithMarkersFromProps(nextProps.markers);
     }
